@@ -1,0 +1,14 @@
+name: build web app
+run-name: ${{ github.actor }} - ${{ github.event_name }} - ${{ github.sha }}
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build web app
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14.x
+      - run: npm install
+      - run: npm run build
